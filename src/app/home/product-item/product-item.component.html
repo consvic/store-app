@@ -1,0 +1,16 @@
+<div class="product__item">
+    <div class="product__image">
+    </div>
+    <div class="product__name">
+      {{ product.name }}
+    </div>
+    <div class="row">
+      <div class="product___price">
+        {{ product.price }}
+      </div>
+      <div [ngClass]="product.available ? 'product__avail green' : 'product__avail red'">
+        {{ product.available ? 'Available' : 'Unavailable' }}
+      </div>
+    </div>
+    <button class="product__cart" (click)="addToCart(product)" [disabled]="!product.available">Add to card +</button>
+</div>
