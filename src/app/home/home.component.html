@@ -1,0 +1,68 @@
+<div class="home__page__container">
+  <h3>Products</h3>
+  <div class="submenu">
+    <div>
+      <button class="category__button" mat-button [matMenuTriggerFor]="main_menu">
+        Categories
+        <img src="assets/svg/arrow-down.svg" class="icon__arrow--down"/>
+      </button>
+
+      <mat-menu #main_menu="matMenu">
+        <ng-container *ngFor="let category of categories">
+          <button mat-menu-item [matMenuTriggerFor]="second_level_menu">{{ category.name }}</button>
+          <mat-menu #second_level_menu="matMenu">
+            <ng-container *ngFor="let sublevel of category.sublevels">
+              <div *ngIf="!sublevel.sublevels">
+                <button mat-menu-item (click)="chooseCategory(sublevel.id)">{{ sublevel.name }}</button>
+              </div>
+              <div *ngIf="sublevel.sublevels">
+                <button mat-menu-item (click)="chooseCategory(sublevel.id)" [matMenuTriggerFor]="third_level_menu">{{ sublevel.name }}</button>
+                <mat-menu #third_level_menu="matMenu">
+                  <button mat-menu-item *ngFor="let subsub of sublevel.sublevels" (click)="chooseCategory(subsub.id)">{{ subsub.name }}</button>
+                </mat-menu>
+              </div>
+            </ng-container>
+          </mat-menu>
+        </ng-container>
+      </mat-menu>
+
+      <button class="clear" (click)="clearCategories()">clear</button>
+    </div>
+    <!--<div>
+      Filtros:
+    </div>-->
+    <!--<div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" [(ngModel)]="availability" id="availability">
+      <label class="form-check-label" for="availability">Available</label>
+    </div>-->
+    <div class="menu__filters">
+      <mat-checkbox [(ngModel)]="availability" (change)="filter('availability')">Available</mat-checkbox>
+      <div class="filter__range">
+        <label for="customRange3">Price</label>
+        <input type="range" class="custom-range" [(ngModel)]="priceTopRange" (change)="filter('range')" min="0" max="10000" step="1" id="customRange3">
+        <div class="price__amount"> 0 - {{priceTopRange ? priceTopRange : '10000+'}} </div>
+      </div>
+      <div class="form-group row filter__stock">
+        <label for="example-number-input">Stock</label>
+        <input class="form-control" type="number" min="1" step="1" [(ngModel)]="itemsInStock" (change)="filter('stock')" id="stock">
+      </div>
+      <div class="form-group sorting">
+        <label for="sort">Sort by</label>
+        <select class="form-control" [(ngModel)]="sortBy" (change)="sortItemsBy()" id="sort">
+          <option value="DEF">Default</option>
+          <option value="PLH">Price: Low to High</option>
+          <option value="PHL">Price: High to Low</option>
+          <option value="AU">Availability to Unavailability</option>
+          <option value="UA">Unavailability to Availability</option>
+          <option value="QLH">Quantity: Low to High</option>
+          <option value="QHL">Quantity: High to Low</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="products__grid">
+    <app-product-item *ngFor="let product of products" [product]="product" (cart)="addToCart($event)"></app-product-item>
+
+  </div>
+</div>

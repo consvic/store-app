@@ -1,0 +1,123 @@
+$white: #fff;
+$brand-red: #FF6464;
+
+.home__page__container {
+  padding: 20px;
+
+  .submenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 20px;
+
+    .category__button {
+      background-color: $white;
+      border: none;
+      padding: 0 15px;
+
+      .icon__arrow--down {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    .clear {
+      background-color: $white;
+      border: none;
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 0.75rem;
+      padding: 0 auto;
+    }
+    .menu__filters {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 15px;
+      padding: 0 15px;
+      flex-wrap: wrap;
+
+      .filter__range {
+        display: flex;
+        flex-direction: row;
+
+        label {
+          margin-right: 15px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+          background: $brand-red;
+        }
+
+        .price__amount {
+          margin-left: 15px;
+          min-width: 100px;
+        }
+      }
+
+      .filter__stock label,
+      .sorting label {
+        margin-right: 15px;
+      }
+
+      .filter__stock {
+        .form-control {
+          max-width: 150px;
+        }
+      }
+
+      .sorting {
+        display: flex;
+        flex-direction: row;
+
+        .form-control {
+          max-width: 200px;
+        }
+      }
+
+    }
+  }
+
+  // overwrite the checkbox background
+  ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: $brand-red !important;
+  }
+
+  // overwrite the ripple overlay on hover and click
+  ::ng-deep .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    background-color: $brand-red !important;
+  }
+
+  .products__grid {
+    margin: 20px auto 0;
+    display: grid;
+    // grid-template-columns: repeat(4, minmax(250px, 300px));
+    grid-gap: 10px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 519px) {
+  .home__page__container .submenu .menu__filters {
+    justify-content: center;
+  }
+  .products__grid {
+    grid-template-columns: repeat(1, minmax(250px, 440px));
+  }
+}
+
+@media (min-width: 520px) and (max-width: 799px) {
+  .products__grid {
+    grid-template-columns: repeat(2, minmax(250px, 300px));
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1045px) {
+  .products__grid {
+    grid-template-columns: repeat(3, minmax(250px, 300px));
+  }
+}
+
+@media (min-width: 1046px) {
+  .products__grid {
+    grid-template-columns: repeat(4, minmax(250px, 300px));
+  }
+}
