@@ -16,8 +16,8 @@ $brand-red: #FF6464;
       padding: 0 15px;
 
       .icon__arrow--down {
-        width: 24px;
         height: 24px;
+        width: 24px;
       }
     }
     .clear {
@@ -30,10 +30,10 @@ $brand-red: #FF6464;
     .menu__filters {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-between;
       margin-top: 15px;
       padding: 0 15px;
-      flex-wrap: wrap;
 
       .filter__range {
         display: flex;
@@ -76,28 +76,31 @@ $brand-red: #FF6464;
     }
   }
 
-  // overwrite the checkbox background
   ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
     background-color: $brand-red !important;
   }
 
-  // overwrite the ripple overlay on hover and click
   ::ng-deep .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
     background-color: $brand-red !important;
   }
 
   .products__grid {
-    margin: 20px auto 0;
     display: grid;
-    // grid-template-columns: repeat(4, minmax(250px, 300px));
     grid-gap: 10px;
     justify-content: center;
+    margin: 20px auto 0;
   }
 }
 
 @media (max-width: 519px) {
-  .home__page__container .submenu .menu__filters {
-    justify-content: center;
+  .home__page__container .submenu {
+    .category__button {
+      padding-left: 0;
+    }
+
+    .menu__filters {
+      justify-content: center;
+    }
   }
   .products__grid {
     grid-template-columns: repeat(1, minmax(250px, 440px));

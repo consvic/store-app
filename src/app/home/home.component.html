@@ -28,13 +28,7 @@
 
       <button class="clear" (click)="clearCategories()">clear</button>
     </div>
-    <!--<div>
-      Filtros:
-    </div>-->
-    <!--<div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" [(ngModel)]="availability" id="availability">
-      <label class="form-check-label" for="availability">Available</label>
-    </div>-->
+
     <div class="menu__filters">
       <mat-checkbox [(ngModel)]="availability" (change)="filter('availability')">Available</mat-checkbox>
       <div class="filter__range">
@@ -63,6 +57,5 @@
 
   <div class="products__grid">
     <app-product-item *ngFor="let product of products" [product]="product" (cart)="addToCart($event)"></app-product-item>
-
   </div>
 </div>

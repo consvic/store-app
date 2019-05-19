@@ -4,16 +4,17 @@ $nav-grey: #f8f9fa;
   flex-direction: row;
 
   .cart__label {
-    font-weight: bold;
     font-size: 1rem;
+    font-weight: bold;
     padding: 10px;
   }
+
   .cart__link {
     padding: 10px 0;
 
     .cart__icon {
-      width: 24px;
       height: 24px;
+      width: 24px;
     }
   }
 }

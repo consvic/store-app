@@ -5,8 +5,8 @@ $white: #fff;
   padding: 20px;
 
   .cart__list {
-    margin-top: 35px;
     border: 1px solid $black;
+    margin-top: 35px;
     padding: 20px;
 
     .product__row {
@@ -23,6 +23,7 @@ $white: #fff;
           background-color: $white;
           border: 0;
           padding-bottom: 10px;
+
           img {
             width: 20px;
             height: 20px;
@@ -43,8 +44,8 @@ $white: #fff;
           .quantity__action {
             background-color: $white;
             border: 0;
-            margin: 0 5px;
             font-weight: 600;
+            margin: 0 5px;
           }
         }
 
